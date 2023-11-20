@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <aside>
+        <div class="logo">
+            <h1 class="pathing">
+                Lý thuyết đồ thị và ứng dụng
+            </h1>
+        </div>
+        <nav class="search-nav" id="search-nav">
+            <h2>Traversal</h2>
+            <button class="disabled" id="bfs">breadth-first</button>
+            <button class="disabled" id="dfs">depth-first</button>
+            <button class="disabled" id="dijkstra">dijkstra</button>
+            <button class="disabled" id="astar">a star</button>
+          </nav>
+          <nav class="regenerate-nav">
+            <h2>Generation</h2>
+    
+            <button class="btn" id="generate">rebuild maze</button>
+          </nav>
+
+        <nav class="sources-nav">
+            <h2>Start and end points</h2>
+
+            <button class="btn" id="randomize">randomize</button>
+      </nav>
+    </aside>
+    
+    <main>
+      <section id="maze">
+        <section class="canvas">
+          <canvas id="canvas">
+            Oops, does your browser support HTML5 Canvas?
+          </canvas>
+          
+          <canvas id="canvas-history">
+          </canvas>
+        </section>
+    </main>
+</body>
+<script src = "/public/bundle.js"></script>

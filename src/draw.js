@@ -7,5 +7,8 @@ class Draw{
     resetDraw(){
         this._draw = {};
     }
+    greeting(){
+        console.log("Hello 2");
+    }
 }
-export default Draw;
+export default Draw;    

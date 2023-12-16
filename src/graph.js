@@ -3,6 +3,24 @@ class Graph{
     constructor(){
         this._collection = [];//Include Nodes
     }
+    /*
+     source: string "x, y"
+     target: string "x, y"
+     pathData
+     draw: draw
+    */
+    static reconstructPath(source, target, pathData, draw){
+        let predecessor = target;
+        //draw a new path from target to source with new color when complete searching
+        while(predecessor !== source){
+            draw.drawPath(pathData[predecessor], "solution", true);
+            const [[leadingNode, previousNode]] = pathData[predecessor];
+            predecessor = previousNode;
+        }
+        this._searching = 0; //used for file dijkstra, reset search = 0 == "no search"
+        draw.drawEnds([source, target]);
+
+    }
 
 }
 class Node{

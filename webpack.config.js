@@ -9,6 +9,14 @@ module.exports = {
     devServer: {
         static: path.join(__dirname, "web"),
         port: 9000,
+    },
+    module: {
+        rules: [
+                {
+                    test: /\.css$/,
+                    use: ["style-loader", "css-loader"],
+                },
+        ]
     }
 };
 

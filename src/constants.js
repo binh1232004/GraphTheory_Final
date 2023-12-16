@@ -20,11 +20,14 @@ const PRIMSCOLORS = {
 };
 //Color of random 2 node
 
-//Strokeline
+//When searching is done
 const SOLUTIONCOLOR = "#ffe600";//Yellow
-const STARTCOLOR = "#4d9803";//Green
+//Random first node is yellow
+const STARTCOLOR = "#ffe600";//Yellow
+//Random second node is red
 const ENDCOLOR = "#870741";//Weight Red
-
+//In dijkstra, have visited node. This color display that
+const VISITCOLOR = 'rgba(249, 63, 44, 0.92)';//Red
 
 
 
@@ -36,6 +39,7 @@ const DIRECTIONS = {
 }
 
 //PROGRESS = 2456 
+//Size of edge 
 const PROGRESS = ((WIDTH * HEIGHT) / (BLOCKWIDTH ** 2)) - 1;
 
 export default {
@@ -50,6 +54,9 @@ export default {
   PRIMSCOLORS,
   PROGRESS,
   SOLUTIONCOLOR,
+  STARTCOLOR,
+  ENDCOLOR,
+  VISITCOLOR
 };
 
 

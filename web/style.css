@@ -1,0 +1,53 @@
+body{
+    margin-top: 100px;
+    background-color: #110B3C;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+.logo{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+    font-size: 30px;
+}
+h2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+nav{
+    margin-bottom: 50px;
+}
+.used{
+    background-color: #0D0927;
+    margin-left: 15px;
+}
+aside{
+    background-color: #060412;
+    height: 100vh;
+    width: 250px;
+}
+button{
+    background-color: #FFBF00;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+button:hover{
+    background-color:#FFEA00;
+}
+canvas{
+    margin-top: 5%;
+}

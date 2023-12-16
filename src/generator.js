@@ -124,6 +124,7 @@ class MazeGenerator{
 
     //Node-Edge-Node-...-Node
     build(){
+        //discovered = true dang o Vmst, discovered = false V
         const firstNode = this._graph._collection[0][0];
         this._graph._collection[0][0]._discovered = true;
         //It will spare one cell size for the last edge

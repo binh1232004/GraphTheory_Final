@@ -5,9 +5,11 @@ class Draw{
     constructor(canvas, ctx){
         this._canvas = canvas;
         this._ctx = ctx;
+        //{"x y z t" : bool (edge)
+        // "x | y" : bool (node)}
         this._draw = {};
     }
-    resetDraw(){
+    resetState() {
         this._draw = {};
     }
    
@@ -41,14 +43,14 @@ class Draw{
         //[[x,y],
         // [z,t]
         // ]
-        const startAndEnd = nodes.map(node => node.split(", ");
-        const cellSize = [CNS.CELLSIZE * 1.5, CNS.CELLSIZE* 1.5];
+        const startAndEnd = nodes.map(node => node.split(", "));
+        const cellSize = [CNS.CELLSIZE * 2, CNS.CELLSIZE* 2];
         
 
 
-        this._ctx.strokeStyle = CNS.SOLUTIONCOLOR;
-        this._ctx.lineWidth = 2;
-        this._ctx.fillStyle = CNS.STARTCOLOR;
+      //  this._ctx.strokeStyle = CNS.SOLUTIONCOLOR;
+      //  this._ctx.lineWidth = 2;
+       this._ctx.fillStyle = CNS.STARTCOLOR;
 
 
         //Can cause bug because startAndEnd value in that is string, but somehow it casting int ?????????
@@ -56,7 +58,36 @@ class Draw{
         this._ctx.fillRect(startAndEnd[0][0], startAndEnd[0][1], ...cellSize)
 
 
+       this._ctx.fillStyle = CNS.ENDCOLOR;
+       this._ctx.fillRect(startAndEnd[1][0], startAndEnd[1][1], ...cellSize)
 
+
+    }
+    /*
+        Nodes: array [[edge, node]]
+            node: string "x, y"
+            edge: Edge
+        Style: string "visit" or "solution"
+        force: bool used to force drawPath
+    */
+    drawPath(nodes, style, force){
+        this._ctx.fillStyle = (style === "visit" ? CNS.VISITCOLOR : CNS.SOLUTIONCOLOR);
+        nodes.forEach((node) => {
+            //edgeId = "posXnodeFrom posYNodeFrom posXnodeTo posYnodeTo"
+            const edgeId = `${node[0]._nodeFrom._x} ${node[0]._nodeFrom._y} ` + 
+ `${node[0]._nodeTo._x} ${node[0]._nodeTo._y}`;
+            //If not initialized in _draw
+            if(!this._draw[edgeId] || force){
+               this.drawEdge(node[0]);
+                this._draw[edgeId] = true;
+            }
+            const [x, y] = Draw.destructurePosition(node[1]);
+            const nodeId = `${x} | ${y}`;
+            if(!this._draw[nodeId] || force){
+                this._ctx.fillRect(x, y, CNS.CELLSIZE, CNS.CELLSIZE);
+                this._draw[nodeId] = true;
+            } 
+       });
     }
     static destructurePosition(nodePosition){
         //  if bellow used to draw path 

@@ -4,7 +4,6 @@ import MazeGenerator from "./generator";
 import Dijkstra from './dijkstra';
 import "../web/style.css";
 
-
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const draw = new Draw(canvas, ctx);
@@ -14,7 +13,7 @@ canvas.height = CNS.HEIGHT;
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("generate").addEventListener("click", generateMaze);
     document.getElementById("randomize").addEventListener("click", randomizeStartAndEnd);
-    document.getElementById('dijkstra').addEventListener('click', doSearch);
+    document.getElementById("search-nav").addEventListener('click', doSearch);
     generateMaze();
 })
 
@@ -112,7 +111,7 @@ function resetSearch() {
     Object.keys(minSpanTree).forEach((position) => {
       if (minSpanTree[position].length !== undefined) {
         //MST [edge, nodeTo]
-        minSpanTree[position].forEach(n => n[1].visited = false);
+        minSpanTree[position].forEach(n => n[1]._visited = false);
       }
     });
   }

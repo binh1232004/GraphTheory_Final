@@ -50,7 +50,6 @@ class Dijkstra{
         const timer = setInterval(() =>{
             if(priorityQueue.length){
                 const currentNode = priorityQueue.dequeue();
-                console.log(currentNode);
                 const edgeToCurrentNode = graph[currentNode][0][0];
                 this._draw.drawPath([[edgeToCurrentNode, currentNode]], "visit");
                 //When starting mark source true
@@ -70,7 +69,7 @@ class Dijkstra{
 
                     const distanceToNeighborNode = distances[currentNode] + neighborEdge._weight;
                     
-                    if(distances[neighborKey] == undefined || distanceToNeighborNode < distances[neighborKey]){
+                    if(distances[neighborKey] == undefined || distanceToNeighborNode < distances[neighborKey] || !neighborEdge._nodeTo._visited){
                         priorityQueue.queue(neighborKey);
                         distances[neighborKey] = distanceToNeighborNode;
                         previous[neighborKey] = [[neighborEdge, currentNode]];

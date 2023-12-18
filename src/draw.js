@@ -13,9 +13,13 @@ class Draw{
         this._draw = {};
     }
    
-    
-    drawEdge(edge, colorStep, customColor){
-        this._ctx.fillStyle = customColor || CNS.PRIMSCOLORS[colorStep];
+    /*
+      edge: Edge
+      colorStep: float (progress of building maze)
+      custumColor: string (Hex)
+    */
+    drawEdge(edge, colorStep){
+        this._ctx.fillStyle = CNS.PRIMSCOLORS[colorStep];
         //Mid = (left + right) / 2
         this._ctx.fillRect(
             (edge._nodeFrom._x + edge._nodeTo._x) / 2,
@@ -24,7 +28,11 @@ class Draw{
         );
 
     }
-
+    /*
+     node: Node
+     colorStep: float (progress of building maze)
+     customColor: color (used to fill color of firstNode)
+    */
     drawNode(node, colorStep, customColor){
         //Get the position of that node
         const [x, y] = Draw.destructurePosition(node);
@@ -35,9 +43,9 @@ class Draw{
     }
 
 
-
-    //use to draw 2 random points 
-    //Parameter: array include ["x, y", "z, t"] pos of node
+    /*
+        Parameter: array include ["x, y", "z, t"] pos of node
+     */
     drawEnds(nodes){
         //Used to split pos of that node into
         //[[x,y],
@@ -83,6 +91,7 @@ class Draw{
             }
             const [x, y] = Draw.destructurePosition(node[1]);
             const nodeId = `${x} | ${y}`;
+            //"x | y"
             if(!this._draw[nodeId] || force){
                 this._ctx.fillRect(x, y, CNS.CELLSIZE, CNS.CELLSIZE);
                 this._draw[nodeId] = true;

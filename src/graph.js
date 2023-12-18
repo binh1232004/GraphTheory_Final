@@ -6,7 +6,10 @@ class Graph{
     /*
      source: string "x, y"
      target: string "x, y"
-     pathData
+     pathData: array2D, 
+        index: string (position of start node)
+        value: array2D ([[Edge relavant to that node: Edge,
+                          End Node: Node]])
      draw: draw
     */
     static reconstructPath(source, target, pathData, draw){
